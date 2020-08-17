@@ -12,21 +12,23 @@ This is the first challenge in your Advanced Programming Class.
 Build Requirements
 ------------------
 ```
-# Build Requirements here
+#Python 3.6.4
 ```
 
 
 How to build
 ------------
 ```
-# instructions here
+# There is a list (lst) in which you introduce the list to make tests.
+# You must separate the lists with brackets [] and to end each list use a comma ,
+
 ```
 
 
 How to Run
 ----------
 ```
-# instructions here
+# You can use Visual Studio Code, or in command line or terminal run the command "python FirstChallenge.py" or "python3 FirstChallenge.py"
 ```
 
 
