@@ -20,6 +20,12 @@ int main(int argc,char **argv)
         for (fahr = start; fahr <= end; fahr += increment)
 	    printf("Fahrenheit: %3d, Celcius: %6.1f\n", fahr, (5.0/9.0)*(fahr-32));
 
+<<<<<<< HEAD
     }
+=======
+    for (fahr = LOWER; fahr <= UPPER; fahr = fahr + STEP)
+	printf("Fahrenheit: %3d, Celcius: %6.1f\n", fahr, (5.0/9.0)*(fahr-32));
+	printf("Hello World");
+>>>>>>> 2b661b19b3cfc70e1acddd58e0ae412dba2aa829
     return 0;
 }
