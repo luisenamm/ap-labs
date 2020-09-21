@@ -33,11 +33,11 @@ int main(int argc, char** argv){
     }
 
     char line[256] = {0};
-    int index = 0;
+    int n = 0;
     while(fgets(line,100,file)){
-        lines[index] = (char*)malloc(strlen(line) + sizeof(char*));
-        strcpy(lines[index],line);
-        index++;
+        lines[n] = (char*)malloc(strlen(line) + sizeof(char*));
+        strcpy(lines[n],line);
+        n++;
     }
     if(fclose(file)){
         perror("Error while trying to close file");
