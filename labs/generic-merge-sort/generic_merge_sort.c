@@ -42,8 +42,8 @@ int main(int argc, char** argv){
     if(fclose(file)){
         perror("Error while trying to close file");
     }
-    mergeSort((void *) lines, 0, index-1, (int (*)(void*, void*)) (numerical ? numcmp : strcmp));
-    printMerged(index,lines);
+    mergeSort((void *) lines, 0, n-1, (int (*)(void*, void*)) (numerical ? numcmp : strcmp));
+    printMerged(n,lines);
     return 0;
 }
 
