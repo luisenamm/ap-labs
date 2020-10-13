@@ -5,13 +5,15 @@ import (
 	"io"
 	"log"
 	"net"
+	"os"
 	"time"
 )
 
-func handleConn(c net.Conn) {
+func handleConn(c net.Conn, tz *time.Location) {
 	defer c.Close()
 	for {
-		_, err := io.WriteString(c, time.Now().Format("15:04:05\n"))
+		str := tz.String() + ": " + time.Now().In(tz).Format("15:04:05\n")
+		_, err := io.WriteString(c, str)
 		if err != nil {
 			return // e.g., client disconnected
 		}
@@ -20,7 +22,17 @@ func handleConn(c net.Conn) {
 }
 
 func main() {
-	listener, err := net.Listen("tcp", "localhost:9090")
+	tz := os.Getenv("TZ")
+	city, err := time.LoadLocation(tz)
+	if err != nil {
+		log.Fatal("Can't get the Time Zone")
+	}
+	if len(os.Args) < 3 {
+		log.Fatal("Missing parameters. Use: go run clock2.go -port n-port")
+	}
+
+	listener, err := net.Listen("tcp", "localhost: "+os.Args[2])
+
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -30,6 +42,6 @@ func main() {
 			log.Print(err) // e.g., connection aborted
 			continue
 		}
-		go handleConn(conn) // handle connections concurrently
+		go handleConn(conn, city) // handle connections concurrently
 	}
 }
