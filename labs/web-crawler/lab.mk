@@ -3,7 +3,6 @@
 APP_NAME=web-crawler
 
 build:
-	go get .
 	go build -o ${APP_NAME} ${APP_NAME}.go
 
 test: build
